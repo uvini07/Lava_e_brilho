@@ -264,11 +264,6 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
   .cta-row .btn { width: 100%; }
   .ba { aspect-ratio: 3/4; }
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  .reveal { opacity: 1; transform: none; }
-  html { scroll-behavior: auto; }
-}
 
 /* ---------- Ajustes mobile ---------- */
 .ba-label { background: rgba(4,10,22,.55); }

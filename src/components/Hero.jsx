@@ -10,7 +10,6 @@ export default function Hero() {
   useEffect(() => {
     const v = video.current
     if (!v) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); setPlaying(false) }
     // pausa quando sai da tela (economiza bateria no celular)
     const io = new IntersectionObserver(([e]) => {
       if (!playing || v.ended) return
