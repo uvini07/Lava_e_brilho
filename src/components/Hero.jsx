@@ -77,13 +77,6 @@ export default function Hero() {
           <span className="fc-icon"><ShieldIcon width={18} height={18} /></span>
           <div><b>Vitrificação</b><small>brilho e proteção por 5 anos</small></div>
         </Glass>
-        <button className="video-toggle" onClick={toggle} aria-label={ended ? 'Rever vídeo' : playing ? 'Pausar vídeo' : 'Reproduzir vídeo'}>
-          {ended
-            ? <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" /></svg>
-            : playing
-            ? <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
-            : <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 5v14l12-7z" /></svg>}
-        </button>
       </div>
     </section>
   )
