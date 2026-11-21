@@ -393,3 +393,10 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
 .hero-stats small { font-size: .74rem; }
 .hero .chip { font-size: .8rem; padding: 7px 12px; }
 @media (max-width: 480px) { .hero .btn { height: 50px; } }
+
+/* Logo do WhatsApp (máscara: herda a cor do texto) */
+.wa-icon { display: inline-block; flex: none; background: currentColor;
+  -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat; }
+.wa-float { background: #25d366; box-shadow: 0 10px 30px -6px rgba(37,211,102,.6), inset 0 1px 0 rgba(255,255,255,.4); }
+.wa-float .wa-icon { width: 30px !important; height: 30px !important; }
+.contact-row .ci .wa-icon { color: #25d366; }

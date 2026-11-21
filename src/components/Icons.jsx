@@ -1,6 +1,7 @@
+import waLogo from '../assets/whatsapp.png'
 const base = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
-export const WhatsIcon = (p) => (
-  <svg {...base} {...p}><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z" /></svg>
+export const WhatsIcon = ({ width = 20, height = 20 }) => (
+  <span className="wa-icon" style={{ width, height, WebkitMaskImage: `url(${waLogo})`, maskImage: `url(${waLogo})` }} aria-hidden="true" />
 )
 export const PinIcon = (p) => (
   <svg {...base} {...p}><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" /><circle cx="12" cy="9" r="2.6" /></svg>
