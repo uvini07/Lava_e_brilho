@@ -381,3 +381,15 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
   .hero > .container { margin-top: -24px; }
 }
 .hero-media-fade { display: none; }
+
+/* Hero: bloco de texto mais compacto */
+.hero h1 { font-size: clamp(2.2rem, 4.4vw, 3.6rem); }
+.hero .lead { font-size: .98rem; max-width: 460px; }
+.hero-copy { gap: 20px; max-width: 480px; }
+.hero .pill { font-size: .78rem; padding: 7px 13px; }
+.hero .btn { height: 46px; padding: 0 20px; font-size: .9rem; }
+.hero-stats { gap: 16px; }
+.hero-stats b { font-size: 1.1rem; }
+.hero-stats small { font-size: .74rem; }
+.hero .chip { font-size: .8rem; padding: 7px 12px; }
+@media (max-width: 480px) { .hero .btn { height: 50px; } }
