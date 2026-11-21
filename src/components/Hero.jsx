@@ -13,15 +13,17 @@ export default function Hero() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); setPlaying(false) }
     // pausa quando sai da tela (economiza bateria no celular)
     const io = new IntersectionObserver(([e]) => {
-      if (!playing) return
+      if (!playing || v.ended) return
       e.isIntersecting ? v.play().catch(() => {}) : v.pause()
     }, { threshold: 0.2 })
     io.observe(v)
     return () => io.disconnect()
   }, [playing])
 
+  const [ended, setEnded] = useState(false)
   const toggle = () => {
     const v = video.current
+    if (ended) { v.currentTime = 0; setEnded(false) }
     if (v.paused) { v.play(); setPlaying(true) } else { v.pause(); setPlaying(false) }
   }
 
@@ -60,33 +62,28 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-media reveal">
-          <div className="halo" />
-          <Glass className="video-frame">
-            <div className="video-wrap">
-              <video
-                ref={video}
-                src="./hero.mp4"
-                poster="./hero-poster.jpg"
-                autoPlay muted loop playsInline preload="metadata"
-                aria-label="Carro esportivo azul acendendo os faróis e passando de sujo para limpo e brilhante"
-              />
-              <div className="video-shine" />
-            </div>
-            <button className="video-toggle" onClick={toggle} aria-label={playing ? 'Pausar vídeo' : 'Reproduzir vídeo'}>
-              {playing
-                ? <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
-                : <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 5v14l12-7z" /></svg>}
-            </button>
-          </Glass>
-          <Glass className="float-card fc-1">
-            <span className="fc-icon"><ShieldIcon width={18} height={18} /></span>
-            <div><b>Vitrificação</b><small>brilho e proteção por 5 anos</small></div>
-          </Glass>
-          <Glass className="float-card fc-2">
-            <span className="live-dot" /> <small>Do sujo ao brilho</small>
-          </Glass>
         </div>
+      <div className="hero-media" >
+        <video
+          ref={video}
+          src="./hero.mp4"
+          poster="./hero-poster.jpg"
+          autoPlay muted playsInline preload="auto"
+          onEnded={() => { setEnded(true); setPlaying(false) }}
+          aria-label="Carro esportivo azul acendendo os faróis e passando de sujo para limpo e brilhante"
+        />
+        <div className="hero-media-fade" />
+        <Glass className="float-card fc-1">
+          <span className="fc-icon"><ShieldIcon width={18} height={18} /></span>
+          <div><b>Vitrificação</b><small>brilho e proteção por 5 anos</small></div>
+        </Glass>
+        <button className="video-toggle" onClick={toggle} aria-label={ended ? 'Rever vídeo' : playing ? 'Pausar vídeo' : 'Reproduzir vídeo'}>
+          {ended
+            ? <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" /><path d="M3 3v5h5" /></svg>
+            : playing
+            ? <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1" /><rect x="14" y="5" width="4" height="14" rx="1" /></svg>
+            : <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 5v14l12-7z" /></svg>}
+        </button>
       </div>
     </section>
   )
